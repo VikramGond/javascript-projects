@@ -2,21 +2,33 @@ const todos = document.getElementById("todos");
 const addBtn = document.getElementById("add");
 const todoLists = document.getElementById("todo-lists");
 
-const createTodos = (e) => {
-  let todo = document.createElement("li");
-  let deleteBtn = document.createElement("button");
-
-  deleteBtn.id = "deleteBtn";
-  todo.id = "todo-list";
-
-  deleteBtn.innerHTML = "Delete"
-  todo.textContent = todos.value.trim();
-  todo.appendChild(deleteBtn);
-  todoLists.appendChild(todo);
+const validateTodos = (e) => {
+  const todo = todos.value.trim();
+  if (todo != "") {
+    createTodos(todo);
+    todos.value = ""
+  }
 };
 
-addBtn.addEventListener("click", createTodos);
+const createTodos = (todo) => {
+  let todoList = document.createElement("li");
+  let deleteBtn = document.createElement("button");
+  todoList.id = "todo-list";
+  deleteBtn.id = "deleteBtn";
+  deleteBtn.innerHTML = "Delete";
+  pushTodos(todo, todoList, deleteBtn);
+};
+
+const pushTodos = (todo, todoList, deleteBtn) => {
+  todoList.textContent = todos.value.trim();
+  todoList.appendChild(deleteBtn);
+  todoLists.appendChild(todoList);
+};
+
+addBtn.addEventListener("click", validateTodos);
 
 todos.addEventListener("keydown", (e) => {
-  if (e.key == "Enter") {createTodos()};
+  if (e.key == "Enter") {
+    validateTodos();
+  }
 });
