@@ -7,6 +7,40 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- container that holds all todo -->
+    <main class="main" id="main">
+
+        <!-- heading of the todo -->
+        <h1 class="heading">What To Do Today...</h1>
+
+        <!-- todo writing section -->
+        <div class="todo-area">
+            <div class="input-area">
+                <label for="todos"></label>
+                <input type="text" name="todos" id="todo-input">
+                <button class="add-todos">Add</button>
+            </div>
+
+            <!-- division for holding todos in sperate area -->
+            <div class="todos-holder">
+                <ul class="todo-lists">
+
+                    <li class="todos-items">
+                        <p class="item">Go To GYM</p>
+                        <button class="delete">Delete</button>
+                        <p class="time">10:10</p>
+                    </li>
+
+                    <li class="todos-items">
+                        <p class="item">Eat Healthy</p>
+                        <button class="delete">Delete</button>
+                        <p class="time">12:05</p>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </main>
     <script src="js/script.js"></script>
 </body>
 </html>
