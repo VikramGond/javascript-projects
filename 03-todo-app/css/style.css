@@ -1,0 +1,157 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Color declaration for the project */
+:root {
+    --primary-font-color: #ffffff;
+    --base-color: #1C2130;
+    --primary-color: #028F76;
+    --secondary-color: #B3E099;
+    --light-color: #FFEAAD;
+    --dark-color: #D14334;
+    --alert-color: #D30000;
+}
+
+/* main container css */
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding-top: 3rem;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--base-color);
+    color: var(--primary-font-color);
+}
+
+.heading {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+}
+
+.todo-area {
+}
+
+.input-field{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    gap: 0.5rem;
+
+}
+
+.input-area {
+    display: inline;
+}
+
+#todo-input {
+    width: 20rem;
+    height: 25px;
+    outline: none;
+    border: none;
+    padding: 0 10px;
+    border-radius: 5px;
+}
+
+.add-todos {
+    background-color: var(--secondary-color);
+    height: 25px;
+    width: 50px;
+    border: none;
+    color: var(--base-color);
+    font-size: 0.8rem;
+    font-weight: 800;
+    border-radius: 5px;
+}
+
+.todos-holder {
+    margin-top: 2rem;
+    border: 2px solid white;
+    width: 400px;
+    padding: 0 20px;
+}
+
+.todo-lists {
+    list-style: none;
+}
+
+.todos-items {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+    align-items: center;
+    border: 1px solid white;
+    padding: 5px 10px;
+    margin: 10px 0;
+}
+
+.delete {
+    background-color: var(--alert-color);
+    border: none;
+    color: var(--primary-font-color);
+    font-weight: 600;
+    height: 24px;
+    width: 60px;
+    border-radius: 5px;
+}
+
+.todos-items > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.time {
+    font-size: 12px;
+}
+
+/* checkbox css */
+ 
+.input[type="checkbox"] {
+  display: none;
+}
+
+
+  /* Style for the custom checkbox */
+.custom-checkbox {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--primary-font-color);
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+}
+
+  /* Style for the custom checkmark */
+.custom-checkbox::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: var(--primary-font-color);
+  border-radius: 2px;
+  opacity: 0;
+}
+
+  /* Show the checkmark when checkbox is checked */
+.input[type="checkbox"]:checked + .custom-checkbox::after {
+  opacity: 1;
+}
+
+/* for centering paragraph */
+.todos-items > label {
+    display: flex;
+    align-items: center;
+}
