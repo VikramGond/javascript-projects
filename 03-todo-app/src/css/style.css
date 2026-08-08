@@ -16,6 +16,10 @@
     --alert-color: #D30000;
 }
 
+body {
+    background-color: var(--base-color);
+}
+
 /* main container css */
 .main {
     display: flex;
