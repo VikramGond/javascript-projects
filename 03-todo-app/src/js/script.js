@@ -58,6 +58,14 @@ const getCurrentTime = () => {
   return `${hours}:${minutes}`;
 };
 
+const handleTodoCompletion = (todoElement, completed) => {
+  const todoId = todoElement.dataset.id;
+  const todo = todos.find((todo) => todo.id === todoId);
+
+  todo.completed = completed;
+  todoElement.classList.toggle("completed", todo.completed);
+};
+
 // --------------------event Listeners--------------------------
 
 // on button press
@@ -67,5 +75,26 @@ addButton.addEventListener("click", validateTodo);
 todoText.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     validateTodo();
+  }
+});
+
+// checkbox
+todoListContainer.addEventListener("change", (e) => {
+    if (e.target.classList.contains("input")) {
+        const todoElement = e.target.closest(".todos-items");
+
+        handleTodoCompletion(todoElement, e.target.checked);
+    }
+});
+
+//text
+todoListContainer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("item")) {
+    const todoElement = e.target.closest(".todos-items");
+    const checkbox = todoElement.querySelector(".input");
+
+    checkbox.checked = !checkbox.checked;
+
+    handleTodoCompletion(todoElement,checkbox.checked);
   }
 });
