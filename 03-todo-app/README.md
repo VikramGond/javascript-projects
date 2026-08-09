@@ -205,7 +205,7 @@ Completed todos are visually distinguished using:
 
 ## 📸 Screenshot
 
-![Todo App Screenshot](./screenshot.png)
+![Todo App Screenshot](./03-todo-app/assets/images/todo-preview)
 
 > Replace `screenshot.png` with your actual screenshot file if you use a different filename or location.
 
