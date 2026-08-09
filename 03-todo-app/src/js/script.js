@@ -22,6 +22,7 @@ const createTodo = (text) => {
     id: crypto.randomUUID(),
     text,
     completed: false,
+    time: getCurrentTime()
   };
 
   todos.push(todo);
@@ -45,10 +46,14 @@ const renderTodos = (todoOBJ) => {
     <p class="item">${todoOBJ.text}</p>
     <div>
         <button class="delete">Delete</button>
-        <p class="time">${getCurrentTime()}</p>
+        <p class="time">${todoOBJ.time}</p>
     </div>`;
 
   todoListContainer.appendChild(newLi);
+
+  if(todoOBJ.completed) {
+    newLi.classList.toggle("completed");
+  }
 
   todoText.value = "";
 };
@@ -78,6 +83,28 @@ const handleTodoDelete = (todoElement) => {
   todos = todos.filter((todo) => todo.id !== todoId);
   todoElement.remove();
   saveTodos();
+};
+
+// saveTodos
+const saveTodos = () => {
+  localStorage.setItem("todos", JSON.stringify(todos));
+};
+
+//load saved todos
+const loadSavedTodos = () => {
+  const savedTodos = localStorage.getItem("todos");
+
+  if (savedTodos) {
+    todos = JSON.parse(savedTodos);
+    renderSavedTodos();
+  }
+};
+
+//render todo after page reload
+const renderSavedTodos = () => {
+  todos.forEach((todo) => {
+    renderTodos(todo);
+  });
 };
 
 // --------------------event Listeners--------------------------
@@ -113,30 +140,8 @@ todoListContainer.addEventListener("click", (e) => {
   }
 });
 
-// saveTodos
-const saveTodos = () => {
-  localStorage.setItem("todos", JSON.stringify(todos));
-};
-
-//load saved todos
-const loadSavedTodos = () => {
-  const savedTodos = localStorage.getItem("todos");
-
-  if (savedTodos) {
-    todos = JSON.parse(savedTodos);
-    renderSavedTodos();
-  }
-};
-
-//push todo after page reload
-const renderSavedTodos = () => {
-  todos.forEach((todo) => {
-    renderTodos(todo);
-  });
-};
 
 //event listener for delete
-
 todoListContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("delete")) {
     const todoElement = e.target.closest(".todos-items");
