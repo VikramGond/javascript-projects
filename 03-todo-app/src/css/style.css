@@ -91,6 +91,11 @@ body {
     margin: 10px 0;
 }
 
+.todos-items.completed .item {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
 .delete {
     background-color: var(--alert-color);
     border: none;
