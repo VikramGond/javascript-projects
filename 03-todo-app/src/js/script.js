@@ -20,26 +20,26 @@ const validateTodo = () => {
 const createTodo = (text) => {
   const todo = {
     id: crypto.randomUUID(),
-    text: text,
+    text,
     completed: false,
   };
 
   todos.push(todo);
-  fetchTodos(todo.text, todo.id);
+  renderTodos(todo);
 };
 
 //fetching todo at user site
-const fetchTodos = (text, id) => {
+const renderTodos = (todoOBJ) => {
   const newLi = document.createElement("li");
   newLi.classList.add("todos-items");
-  newLi.dataset.id = id;
+  newLi.dataset.id = todoOBJ.id;
 
   newLi.innerHTML = `
     <label>
         <input type="checkbox" class="input" />
         <span class="custom-checkbox"></span>
     </label>
-    <p class="item">${text}</p>
+    <p class="item">${todoOBJ.text}</p>
     <div>
         <button class="delete">Delete</button>
         <p class="time">${getCurrentTime()}</p>
