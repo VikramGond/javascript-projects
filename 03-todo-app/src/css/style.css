@@ -93,6 +93,7 @@ body {
 
 .todos-items.completed .item {
     text-decoration: line-through;
+    font-style: italic;
     opacity: 0.5;
 }
 
