@@ -53,6 +53,10 @@ const renderTodos = (todoOBJ) => {
       </div>`;
 
   todoListContainer.appendChild(newLi);
+
+  if(todoOBJ.completed) {
+    newLi.classList.add("completed")
+  }
 };
 
 //getting exact time from user site
