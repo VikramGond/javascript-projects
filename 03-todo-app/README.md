@@ -1,17 +1,20 @@
 # 📝 Todo App
 
 A simple and clean **Todo List web application** built with **HTML, CSS, and JavaScript**.
-This project allows users to add tasks, mark them as completed, delete tasks, and see the time when each task was created.
 
-This is one of my JavaScript projects, created to practice **DOM manipulation, event handling, dynamic HTML elements, and basic JavaScript logic**.
+This project was created to strengthen my JavaScript fundamentals through practical development. It focuses on **DOM manipulation, event handling, application state, array methods, localStorage, and dynamically generated HTML elements**.
 
 ## 🚀 Features
 
 * ➕ Add new todos
 * ⌨️ Add todos using the **Enter** key
 * ☑️ Mark todos as completed using a custom checkbox
+* 🖱️ Click the todo text to mark it as completed
 * 🗑️ Delete todos
-* 🕐 Display the time when a todo was added
+* 🕐 Display the time when a todo was created
+* 💾 Save todos using **localStorage**
+* 🔄 Restore todos automatically after page refresh
+* 🔄 Preserve completed status after page refresh
 * 🚫 Prevent empty todos from being added
 * 🎨 Custom dark-themed UI
 * 📱 Simple and lightweight design
@@ -19,8 +22,9 @@ This is one of my JavaScript projects, created to practice **DOM manipulation, e
 ## 🛠️ Technologies Used
 
 * **HTML5** — Structure of the application
-* **CSS3** — Styling and layout
-* **JavaScript (ES6+)** — Application logic and DOM manipulation
+* **CSS3** — Styling, layout, custom checkbox, and completed-state styling
+* **JavaScript (ES6+)** — Application logic, state management, DOM manipulation, and event handling
+* **Web Storage API** — Persistent todo data using `localStorage`
 
 ## 📂 Project Structure
 
@@ -36,6 +40,8 @@ Todo-App/
 │   └── js/
 │       └── script.js
 │
+├── screenshot.png
+│
 └── README.md
 ```
 
@@ -48,90 +54,191 @@ The user enters a task in the input field and clicks the **Add** button.
 JavaScript then:
 
 1. Gets the text from the input.
-2. Removes unnecessary whitespace.
-3. Checks whether the input is empty.
-4. Creates a new `<li>` element.
-5. Adds the todo to the todo list.
-6. Records the current time.
-7. Clears the input field.
+2. Removes unnecessary whitespace using `trim()`.
+3. Validates that the input isn't empty.
+4. Creates a Todo object with a unique ID.
+5. Stores the Todo in the `todos` array.
+6. Records the creation time.
+7. Saves the updated Todo list to `localStorage`.
+8. Dynamically renders the Todo on the page.
+9. Clears the input field.
+
+Each Todo is stored in a structure similar to:
+
+```js
+{
+    id: "unique-id",
+    text: "Learn JavaScript",
+    completed: false,
+    time: "13:05"
+}
+```
 
 ### 2. Adding with Enter
 
-You don't have to click the **Add** button every time.
+Users can press **Enter** while typing in the input field instead of clicking the **Add** button.
 
-Pressing **Enter** while typing in the input field also adds the todo.
+The `keydown` event detects the Enter key and triggers the same Todo creation process.
 
-### 3. Custom Checkbox
+### 3. Completing a Todo
 
-Each todo contains a custom checkbox that allows the user to mark the task as completed.
+Each Todo contains a custom checkbox.
 
-### 4. Delete Button
+When the checkbox is changed:
 
-Every todo has its own **Delete** button.
+1. The Todo's ID is retrieved from the element's `data-id`.
+2. The corresponding Todo is found in the `todos` array.
+3. Its `completed` property is updated.
+4. A `completed` CSS class is added or removed.
+5. The updated Todo list is saved to `localStorage`.
 
-> 🚧 Delete functionality is currently part of the UI and can be implemented using event delegation.
+Users can also click directly on the Todo text to toggle its completed state.
+
+### 4. Deleting a Todo
+
+Each Todo has a **Delete** button.
+
+When clicked:
+
+1. The Todo's ID is retrieved.
+2. The corresponding Todo is removed from the `todos` array using `filter()`.
+3. The Todo element is removed from the DOM.
+4. The updated Todo list is saved to `localStorage`.
+
+### 5. Local Storage
+
+Todos are stored in the browser using `localStorage`.
+
+Since `localStorage` stores data as strings, the Todo array is converted using:
+
+```js
+JSON.stringify(todos)
+```
+
+When the application starts, the stored data is retrieved and converted back into JavaScript objects using:
+
+```js
+JSON.parse(savedTodos)
+```
+
+Saved Todos are then rendered automatically.
+
+This allows Todo data to remain available even after refreshing the page.
 
 ## 🧠 JavaScript Concepts Practiced
 
 This project helped me practice several important JavaScript concepts:
 
+### DOM Manipulation
+
 * `document.getElementById()`
 * `document.querySelector()`
 * `document.createElement()`
 * `classList.add()`
+* `classList.toggle()`
+* `classList.remove()`
+* `dataset`
 * `innerHTML`
 * `appendChild()`
-* Event listeners
-* Keyboard events
+* `element.remove()`
+* `closest()`
+
+### Events
+
+* `addEventListener()`
+* `click`
+* `change`
 * `keydown`
+* Event delegation
+* `event.target`
+
+### JavaScript Fundamentals
+
+* Variables
+* Arrays
+* Objects
 * Functions
 * Arrow functions
+* `find()`
+* `filter()`
 * Template literals
-* `Date` object
+* Conditional expressions
+* `crypto.randomUUID()`
+* `Date`
 * `String.prototype.padStart()`
-* Input validation
-* DOM manipulation
+
+### Data Persistence
+
+* `localStorage.setItem()`
+* `localStorage.getItem()`
+* `JSON.stringify()`
+* `JSON.parse()`
+
+### Application State
+
+The project uses the `todos` array as the main source of application state.
+
+Changes to the state are reflected in the DOM and saved to localStorage.
+
+```text
+User Action
+     ↓
+Update todos[]
+     ↓
+Update DOM
+     ↓
+Save to localStorage
+```
 
 ## 🎨 UI
 
-The application uses a dark background with green and light-colored accents.
+The application uses a dark-themed interface with green and light-colored accents.
 
-The todo items are displayed using **CSS Grid**, allowing the checkbox, todo text, and action section to remain properly aligned.
+Todo items are displayed using **CSS Grid**, keeping the checkbox, task text, delete button, and creation time properly aligned.
+
+Completed todos are visually distinguished using:
+
+* Strikethrough text
+* Reduced opacity
+* Italic styling
+* Custom checkbox state
 
 ## 📸 Screenshot
 
-Add a screenshot of your application here:
-
-```md
 ![Todo App Screenshot](./screenshot.png)
-```
+
+> Replace `screenshot.png` with your actual screenshot file if you use a different filename or location.
 
 ## 🔮 Future Improvements
 
-Some features I plan to add:
+Possible improvements for future versions:
 
-* [ ] Delete todo functionality
-* [ ] Mark completed todos with a different style
 * [ ] Edit existing todos
-* [ ] Store todos using `localStorage`
-* [ ] Show the number of completed/pending todos
-* [ ] Add a clear-all button
-* [ ] Add filtering for All / Active / Completed
-* [ ] Improve responsive design
-* [ ] Add animations
-* [ ] Add task persistence after page refresh
+* [ ] Show the number of completed and pending todos
+* [ ] Add a **Clear All** button
+* [ ] Add filtering for **All / Active / Completed**
+* [ ] Improve responsive design for smaller screens
+* [ ] Add animations and transitions
+* [ ] Add confirmation before deleting a Todo
+* [ ] Add task priority
+* [ ] Add due dates
+* [ ] Add categories or tags
+* [ ] Improve accessibility
+* [ ] Add drag-and-drop Todo reordering
 
 ## 🎯 Purpose of the Project
 
-The main goal of this project is to strengthen my **JavaScript fundamentals** by building something practical instead of only following tutorials.
+The main goal of this project is to strengthen my **JavaScript fundamentals by building a practical application without relying on a framework**.
 
-Through this project, I am practicing how JavaScript interacts with HTML and CSS to create dynamic web applications.
+Instead of only following tutorials, I am using this project to practice how JavaScript manages application state, interacts with the DOM, responds to user events, and persists data.
 
 ## 📌 Project Status
 
-**Currently in development 🚧**
+**Core Todo functionality completed ✅**
 
-More functionality and improvements will be added as I continue learning JavaScript.
+The application currently supports creating, completing, deleting, and persisting Todos using `localStorage`.
+
+Future features will be added as I continue improving my JavaScript skills.
 
 ---
 
