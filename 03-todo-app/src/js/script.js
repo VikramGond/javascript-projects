@@ -4,7 +4,7 @@ const todoListContainer = document.querySelector(".todo-lists");
 
 //---------------------------todos array------------------------------
 
-const todos = [];
+let todos = [];
 
 //----------------------function declaration---------------------------
 
@@ -25,6 +25,7 @@ const createTodo = (text) => {
   };
 
   todos.push(todo);
+  saveTodos();
   renderTodos(todo);
 };
 
@@ -36,7 +37,9 @@ const renderTodos = (todoOBJ) => {
 
   newLi.innerHTML = `
     <label>
-        <input type="checkbox" class="input" />
+        <input type="checkbox" 
+               class="input" 
+               ${todoOBJ.completed ? "checked" : ""} />
         <span class="custom-checkbox"></span>
     </label>
     <p class="item">${todoOBJ.text}</p>
@@ -58,12 +61,23 @@ const getCurrentTime = () => {
   return `${hours}:${minutes}`;
 };
 
+//handles todo completion
 const handleTodoCompletion = (todoElement, completed) => {
   const todoId = todoElement.dataset.id;
   const todo = todos.find((todo) => todo.id === todoId);
 
   todo.completed = completed;
   todoElement.classList.toggle("completed", todo.completed);
+  saveTodos();
+};
+
+//function for deleting todos
+const handleTodoDelete = (todoElement) => {
+  const todoId = todoElement.dataset.id;
+
+  todos = todos.filter((todo) => todo.id !== todoId);
+  todoElement.remove();
+  saveTodos();
 };
 
 // --------------------event Listeners--------------------------
@@ -80,11 +94,11 @@ todoText.addEventListener("keydown", (e) => {
 
 // checkbox
 todoListContainer.addEventListener("change", (e) => {
-    if (e.target.classList.contains("input")) {
-        const todoElement = e.target.closest(".todos-items");
+  if (e.target.classList.contains("input")) {
+    const todoElement = e.target.closest(".todos-items");
 
-        handleTodoCompletion(todoElement, e.target.checked);
-    }
+    handleTodoCompletion(todoElement, e.target.checked);
+  }
 });
 
 //text
@@ -95,6 +109,40 @@ todoListContainer.addEventListener("click", (e) => {
 
     checkbox.checked = !checkbox.checked;
 
-    handleTodoCompletion(todoElement,checkbox.checked);
+    handleTodoCompletion(todoElement, checkbox.checked);
   }
 });
+
+// saveTodos
+const saveTodos = () => {
+  localStorage.setItem("todos", JSON.stringify(todos));
+};
+
+//load saved todos
+const loadSavedTodos = () => {
+  const savedTodos = localStorage.getItem("todos");
+
+  if (savedTodos) {
+    todos = JSON.parse(savedTodos);
+    renderSavedTodos();
+  }
+};
+
+//push todo after page reload
+const renderSavedTodos = () => {
+  todos.forEach((todo) => {
+    renderTodos(todo);
+  });
+};
+
+//event listener for delete
+
+todoListContainer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("delete")) {
+    const todoElement = e.target.closest(".todos-items");
+
+    handleTodoDelete(todoElement);
+  }
+});
+
+loadSavedTodos();
