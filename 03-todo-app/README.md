@@ -4,6 +4,10 @@ A simple and clean **Todo List web application** built with **HTML, CSS, and Jav
 
 This project was created to strengthen my JavaScript fundamentals through practical development. It focuses on **DOM manipulation, event handling, application state, array methods, localStorage, and dynamically generated HTML elements**.
 
+## 📸 Preview
+
+![Todo App](assets/images/todo-preview.gif)
+
 ## 🚀 Features
 
 * ➕ Add new todos
