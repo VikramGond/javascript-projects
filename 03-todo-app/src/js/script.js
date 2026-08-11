@@ -49,7 +49,7 @@ const renderTodos = (todoOBJ) => {
       <p class="item">${todoOBJ.text}</p>
       <div class="controls">
             <button class="edit"><i class="fa-regular fa-pen-to-square fa-lg" style="color: rgb(255, 255, 255);"></i></button>
-            <button class="delete"><i class="fa-solid fa-trash-can fa-lg" style="color: rgb(255, 255, 255);"></i></button>
+            <button class="delete"><i class="fa-solid fa-trash-can fa-lg" style="color: rgb(200, 60, 60);"></i></button>
             <p class="time">${todoOBJ.time}</p>
       </div>`;
 
