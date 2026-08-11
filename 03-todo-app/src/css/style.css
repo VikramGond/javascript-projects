@@ -87,7 +87,7 @@ body {
     gap: 10px;
     align-items: center;
     border: 1px solid white;
-    padding: 5px 10px;
+    padding: 5px 5px;  
     margin: 10px 0;
 }
 
@@ -97,26 +97,32 @@ body {
     opacity: 0.5;
 }
 
-.delete {
-    background-color: var(--alert-color);
-    border: none;
-    color: var(--primary-font-color);
-    font-weight: 600;
-    height: 24px;
-    width: 60px;
-    border-radius: 5px;
+.controls {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: auto auto;
+    gap: 8px 8px;
+    align-items: center;
+    justify-self: center;
 }
 
-.todos-items > div {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    justify-content: center;
-    align-items: flex-end;
+.delete {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
+
+.edit {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
 
 .time {
-    font-size: 12px;
+    grid-column: 1 / -1;
+    justify-self: center;
+    font-size: 10px;
 }
 
 /* checkbox css */

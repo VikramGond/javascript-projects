@@ -47,15 +47,16 @@ const renderTodos = (todoOBJ) => {
           <span class="custom-checkbox"></span>
       </label>
       <p class="item">${todoOBJ.text}</p>
-      <div>
-          <button class="delete">Delete</button>
-          <p class="time">${todoOBJ.time}</p>
+      <div class="controls">
+            <button class="edit"><i class="fa-regular fa-pen-to-square fa-lg" style="color: rgb(255, 255, 255);"></i></button>
+            <button class="delete"><i class="fa-solid fa-trash-can fa-lg" style="color: rgb(255, 255, 255);"></i></button>
+            <p class="time">${todoOBJ.time}</p>
       </div>`;
 
   todoListContainer.appendChild(newLi);
 
-  if(todoOBJ.completed) {
-    newLi.classList.add("completed")
+  if (todoOBJ.completed) {
+    newLi.classList.add("completed");
   }
 };
 
@@ -143,7 +144,7 @@ todoListContainer.addEventListener("click", (e) => {
 
 //event listener for delete
 todoListContainer.addEventListener("click", (e) => {
-  if (e.target.classList.contains("delete")) {
+  if (e.target.closest(".delete")) {
     const todoElement = e.target.closest(".todos-items");
 
     handleTodoDelete(todoElement);
