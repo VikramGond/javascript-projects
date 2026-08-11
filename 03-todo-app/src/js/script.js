@@ -48,7 +48,7 @@ const renderTodos = (todoOBJ) => {
       </label>
       <p class="item">${todoOBJ.text}</p>
       <div class="controls">
-            <button class="edit"><i class="fa-regular fa-pen-to-square fa-lg" style="color: rgb(255, 255, 255);"></i></button>
+            <button class="edit"><i class="fa-regular fa-pen-to-square fa-lg" style="color: rgb(39, 163, 22);"></i></button>
             <button class="delete"><i class="fa-solid fa-trash-can fa-lg" style="color: rgb(200, 60, 60);"></i></button>
             <p class="time">${todoOBJ.time}</p>
       </div>`;
@@ -130,8 +130,11 @@ todoListContainer.addEventListener("change", (e) => {
   }
 });
 
-//text
+
+//event listener for delete
 todoListContainer.addEventListener("click", (e) => {
+
+  //Listener for Handle completion
   if (e.target.classList.contains("item")) {
     const todoElement = e.target.closest(".todos-items");
     const checkbox = todoElement.querySelector(".input");
@@ -140,15 +143,22 @@ todoListContainer.addEventListener("click", (e) => {
 
     handleTodoCompletion(todoElement, checkbox.checked);
   }
-});
 
-//event listener for delete
-todoListContainer.addEventListener("click", (e) => {
+  // Handle delete
   if (e.target.closest(".delete")) {
     const todoElement = e.target.closest(".todos-items");
 
     handleTodoDelete(todoElement);
   }
+
+  // handle edit
+  if (e.target.closest(".edit")) {
+    const todoElement = e.target.closest(".todos-items");
+
+    console.log(todoElement);
+  }
+
 });
+
 
 loadSavedTodos();
