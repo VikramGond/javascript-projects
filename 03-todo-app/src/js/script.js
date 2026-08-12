@@ -155,6 +155,27 @@ const confirmEdit = (todoElement) => {
   }
 };
 
+const cancelEdit = (todoElement) => {
+  const todoId = todoElement.dataset.id;
+  const todo = todos.find((todo) => (todo.id = todoId));
+
+  if (!todo) return;
+
+  todoElement.innerHTML = `
+        <label>
+          <input type="checkbox" 
+                class="input" 
+                ${todo.completed ? "checked" : ""} />
+          <span class="custom-checkbox"></span>
+      </label>
+      <p class="item">${todo.text}</p>
+      <div class="controls">
+            <button class="edit"><i class="fa-regular fa-pen-to-square fa-lg" style="color: rgb(39, 163, 22);"></i></button>
+            <button class="delete"><i class="fa-solid fa-trash-can fa-lg" style="color: rgb(200, 60, 60);"></i></button>
+            <p class="time">${todo.time}</p>
+      </div>`;
+};
+
 // --------------------event Listeners--------------------------
 
 // on button press
@@ -201,6 +222,11 @@ todoListContainer.addEventListener("click", (e) => {
   if (e.target.closest(".confirmEdit")) {
     const todoElement = e.target.closest(".todos-items");
     confirmEdit(todoElement);
+  }
+
+  if (e.target.closest(".cancelEdit")) {
+    const todoElement = e.target.closest(".todos-items");
+    cancelEdit(todoElement);
   }
 });
 
