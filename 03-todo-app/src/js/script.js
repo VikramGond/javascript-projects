@@ -124,16 +124,16 @@ const editTodo = (todoElement) => {
 };
 
 const confirmEdit = (todoElement) => {
-  const todoId = todoElement.dataset.id
-  const todo = todos.find((todo)=> todo.id === todoId)
-  
-  if(!todo) return
-  
-  const newTodo = todoElement.querySelector(".editInput").value.trim()
+  const todoId = todoElement.dataset.id;
+  const todo = todos.find((todo) => todo.id === todoId);
 
-  if(newTodo === "") return
+  if (!todo) return;
 
-  todo.text = newTodo
+  const newTodo = todoElement.querySelector(".editInput").value.trim();
+
+  if (newTodo === "") return;
+
+  todo.text = newTodo;
   saveTodos();
 
   todoElement.innerHTML = `
@@ -150,10 +150,10 @@ const confirmEdit = (todoElement) => {
             <p class="time">${todo.time}</p>
       </div>`;
 
-    if (todo.completed) {
-        todoElement.classList.add("completed");
-    }
-}
+  if (todo.completed) {
+    todoElement.classList.add("completed");
+  }
+};
 
 // --------------------event Listeners--------------------------
 
@@ -198,9 +198,9 @@ todoListContainer.addEventListener("click", (e) => {
     editTodo(todoElement);
   }
 
-  if(e.target.closest(".confirmEdit")) {
-    const todoElement = e.target.closest(".todos-items")
-    confirmEdit(todoElement)
+  if (e.target.closest(".confirmEdit")) {
+    const todoElement = e.target.closest(".todos-items");
+    confirmEdit(todoElement);
   }
 
   // if(e.target.closest(".cancelEdit")) {
