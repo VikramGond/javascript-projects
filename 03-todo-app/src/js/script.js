@@ -202,11 +202,13 @@ todoListContainer.addEventListener("click", (e) => {
     const todoElement = e.target.closest(".todos-items");
     confirmEdit(todoElement);
   }
+});
 
-  // if(e.target.closest(".cancelEdit")) {
-  //   const todoElement = e.target.closest(".todos-items")
-  //   cancelEdit(todoElement)
-  // }
+todoListContainer.addEventListener("keydown", (e) => {
+  if (e.target.classList.contains("editInput") && e.key === "Enter") {
+    const todoElement = e.target.closest(".todos-items");
+    confirmEdit(todoElement);
+  }
 });
 
 loadSavedTodos();
