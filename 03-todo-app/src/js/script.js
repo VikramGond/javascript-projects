@@ -109,6 +109,52 @@ const renderSavedTodos = () => {
   });
 };
 
+//edit todo function
+const editTodo = (todoElement) => {
+  const todoId = todoElement.dataset.id;
+  const todo = todos.find((todo) => todo.id === todoId);
+  todoElement.innerHTML = `<div class="editDiv">
+      <input class="editInput" type="text" value="${todo.text}">
+
+      <div class="confirm">
+        <button class="confirmEdit"><i class="fa-solid fa-check" style="color: rgb(4, 255, 0);"></i></button>
+        <button class="cancelEdit"><i class="fa-solid fa-xmark" style="color: rgb(255, 0, 0);"></i></button>
+      </div>
+    </div>`;
+};
+
+const confirmEdit = (todoElement) => {
+  const todoId = todoElement.dataset.id
+  const todo = todos.find((todo)=> todo.id === todoId)
+  
+  if(!todo) return
+  
+  const newTodo = todoElement.querySelector(".editInput").value.trim()
+
+  if(newTodo === "") return
+
+  todo.text = newTodo
+  saveTodos();
+
+  todoElement.innerHTML = `
+        <label>
+          <input type="checkbox" 
+                class="input" 
+                ${todo.completed ? "checked" : ""} />
+          <span class="custom-checkbox"></span>
+      </label>
+      <p class="item">${todo.text}</p>
+      <div class="controls">
+            <button class="edit"><i class="fa-regular fa-pen-to-square fa-lg" style="color: rgb(39, 163, 22);"></i></button>
+            <button class="delete"><i class="fa-solid fa-trash-can fa-lg" style="color: rgb(200, 60, 60);"></i></button>
+            <p class="time">${todo.time}</p>
+      </div>`;
+
+    if (todo.completed) {
+        todoElement.classList.add("completed");
+    }
+}
+
 // --------------------event Listeners--------------------------
 
 // on button press
@@ -125,40 +171,42 @@ todoText.addEventListener("keydown", (e) => {
 todoListContainer.addEventListener("change", (e) => {
   if (e.target.classList.contains("input")) {
     const todoElement = e.target.closest(".todos-items");
-
     handleTodoCompletion(todoElement, e.target.checked);
   }
 });
 
-
 //event listener for delete
 todoListContainer.addEventListener("click", (e) => {
-
   //Listener for Handle completion
   if (e.target.classList.contains("item")) {
     const todoElement = e.target.closest(".todos-items");
     const checkbox = todoElement.querySelector(".input");
 
     checkbox.checked = !checkbox.checked;
-
     handleTodoCompletion(todoElement, checkbox.checked);
   }
 
   // Handle delete
   if (e.target.closest(".delete")) {
     const todoElement = e.target.closest(".todos-items");
-
     handleTodoDelete(todoElement);
   }
 
   // handle edit
   if (e.target.closest(".edit")) {
     const todoElement = e.target.closest(".todos-items");
-
-    console.log(todoElement);
+    editTodo(todoElement);
   }
 
-});
+  if(e.target.closest(".confirmEdit")) {
+    const todoElement = e.target.closest(".todos-items")
+    confirmEdit(todoElement)
+  }
 
+  // if(e.target.closest(".cancelEdit")) {
+  //   const todoElement = e.target.closest(".todos-items")
+  //   cancelEdit(todoElement)
+  // }
+});
 
 loadSavedTodos();
