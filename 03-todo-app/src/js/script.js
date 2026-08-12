@@ -136,23 +136,8 @@ const confirmEdit = (todoElement) => {
   todo.text = newTodo;
   saveTodos();
 
-  todoElement.innerHTML = `
-        <label>
-          <input type="checkbox" 
-                class="input" 
-                ${todo.completed ? "checked" : ""} />
-          <span class="custom-checkbox"></span>
-      </label>
-      <p class="item">${todo.text}</p>
-      <div class="controls">
-            <button class="edit"><i class="fa-regular fa-pen-to-square fa-lg" style="color: rgb(39, 163, 22);"></i></button>
-            <button class="delete"><i class="fa-solid fa-trash-can fa-lg" style="color: rgb(200, 60, 60);"></i></button>
-            <p class="time">${todo.time}</p>
-      </div>`;
-
-  if (todo.completed) {
-    todoElement.classList.add("completed");
-  }
+  renderEditedTodos(todoElement, todo)
+ 
 };
 
 const cancelEdit = (todoElement) => {
@@ -160,6 +145,11 @@ const cancelEdit = (todoElement) => {
   const todo = todos.find((todo) => (todo.id = todoId));
 
   if (!todo) return;
+
+  renderEditedTodos(todoElement, todo)
+};
+
+const renderEditedTodos = (todoElement, todo) => {
 
   todoElement.innerHTML = `
         <label>
