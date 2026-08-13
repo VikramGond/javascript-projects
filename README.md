@@ -38,7 +38,7 @@ I focus on **learning by building**, gradually increasing the complexity of each
 | --- | ------------------ | ---------------------------------------------------------------------------------------------------------------------- | -------------- | --------------------------- |
 | 01  | Counter App        | A simple counter with increment, decrement, and reset functionality.                                                   | ✅ Completed    | [View](./01-Counter-app/)   |
 | 02  | Digital Clock      | Displays the current time and date with 12-hour and 24-hour format support.                                            | ✅ Completed    | [View](./02-digital-clock/) |
-| 03  | Todo App           | A Todo application with task management, completion tracking, deletion, creation time, and persistent browser storage. | 🚧 In Progress | [View](./03-todo-app/)      |
+| 03  | Todo App           | A Todo application with task management, completion tracking, deletion, creation time, and persistent browser storage. | ✅ Completed  | [View](./03-todo-app/)      |
 | 04  | Password Generator | Generate passwords with customizable options.                                                                          | ⏳ Planned      | -                           |
 | 05  | Weather App        | Fetch and display live weather information using an API.                                                               | ⏳ Planned      | -                           |
 
@@ -52,60 +52,73 @@ A Todo List application built with **HTML, CSS, and JavaScript**.
 
 The project focuses on practicing JavaScript state management, DOM manipulation, event delegation, and browser storage.
 
+## 📸 Featured Project
+
+### 📝 Todo App
+
+A responsive Todo List application built with **HTML, CSS, and JavaScript**.
+
+The project focuses on practicing JavaScript state management, DOM manipulation, event delegation, dynamic rendering, filtering, and browser storage.
+
 ### Features
 
-* ➕ Add new todos
-* ⌨️ Add todos using the **Enter** key
-* ☑️ Mark todos as completed
-* 🖱️ Click todo text to mark it as completed
-* 🗑️ Delete todos
-* 🕐 Display the time when a todo was created
-* 💾 Persist todos using `localStorage`
-* 🔄 Restore todos after page refresh
-* 🔄 Preserve completed state after refresh
-* 🚫 Prevent empty todos from being added
-* 🎨 Custom checkbox
-* 🌙 Dark-themed UI
-* 📐 CSS Grid-based layout
+- ➕ Add new todos
+- ⌨️ Add todos using the **Enter** key
+- ☑️ Mark todos as completed
+- 🖱️ Click todo text to toggle completion
+- ✏️ Edit existing todos
+- ✅ Confirm edited todos
+- ❌ Cancel editing
+- 🗑️ Delete todos
+- 🕐 Display the time when a todo was created
+- 🔍 Filter todos by All, Active, and Completed
+- 💾 Persist todos using `localStorage`
+- 🔄 Restore todos after page refresh
+- 🚫 Prevent empty todos from being added
+- 📱 Responsive layout
+- 🎨 Custom checkbox and dark-themed UI
+- 🎯 Dynamic DOM rendering
 
 ### Concepts Practiced
 
-* DOM manipulation
-* Event listeners
-* Event delegation
-* `event.target`
-* `closest()`
-* `dataset`
-* Dynamic element creation
-* Template literals
-* JavaScript objects and arrays
-* `find()`
-* `filter()`
-* `classList`
-* Input validation
-* Keyboard events
-* Date and time handling
-* `localStorage`
-* `JSON.stringify()`
-* `JSON.parse()`
-* Application state management
+- DOM manipulation
+- Event listeners
+- Event delegation
+- `event.target`
+- `closest()`
+- `dataset`
+- Dynamic element creation
+- Template literals
+- JavaScript objects and arrays
+- `find()`
+- `filter()`
+- `classList`
+- Input validation
+- Keyboard events
+- Date and time handling
+- `localStorage`
+- `JSON.stringify()`
+- `JSON.parse()`
+- Application state management
+- Responsive CSS
+- CSS Grid and Flexbox
 
-> 🚧 The Todo App is still under development. Editing, filtering, task statistics, and other improvements are planned.
+> The Todo App is now complete for its current learning objective. Future features may be explored in later projects rather than continuously expanding this application.
 
 ---
 
 ## 📈 Progress
 
-* ✅ Projects Completed: **2**
-* 🚧 Projects In Progress: **1**
-* ⏳ Projects Planned: **2**
+* ✅ Projects Completed: **3**
+* 🚧 Projects In Progress: **0**
+* ⏳ Projects Planned: **4**
 * 🎯 Target: **30+ JavaScript Projects**
 
 ### Current Progress
 
 ```text
 Projects Built
-██████████░░░░░░░░░░  3 / 30+
+████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  4 / 30+
 ```
 
 ---
