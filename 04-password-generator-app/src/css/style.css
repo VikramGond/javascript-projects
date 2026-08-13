@@ -1,7 +1,7 @@
 :root {
     --primary-color: #6C63FF;
     --secondary-color: #7D6AFF;
-    --thrid-color: #9C87FF;
+    --thrid-color: #2f00ffb8;
     --forth-color: #d4cbff4b;
 }
 
@@ -59,4 +59,19 @@
     gap: 10px;
     align-items: center;
     border-radius: 5px;
+}
+
+input {
+    cursor: pointer;
+}
+
+.generate-button {
+    background-color: var(--thrid-color);
+    border: none;
+    width: 100px;
+    padding: 8px;
+    border-radius: 5px;
+    margin-top: 15px;
+    font-weight: 900;
+    cursor: pointer;
 }
