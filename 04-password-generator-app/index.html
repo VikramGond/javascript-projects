@@ -12,13 +12,13 @@
             <p>sjkd894o29283dfsdedffdfd</p>
         </div>
       <div class="password-length">
-        <label for="password-length">Passwrod Length: </label>
+        <label for="password-length" id="password-length-area">Password Length: 08</label>
         <input
           type="range"
           name="password-length"
           id="password-length"
-          minlength="8"
-          maxlength="24"
+          min="8"
+          max="24"
         />
       </div>
       <div class="modification">
@@ -38,6 +38,10 @@
           <label for="numbers">Numbers</label>
           <input type="checkbox" name="numbers" id="numbers" />
         </div>
+      </div>
+
+      <div class="generate">
+        <button class="generate-button">Generate</button>
       </div>
     </main>
     <script src="src/javascript/script.js"></script>
