@@ -71,6 +71,38 @@ body {
     border-radius: 5px;
 }
 
+.filters {
+    padding: 5px;
+    width: 360px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.filter-heading {
+    color: var(--light-color);
+}
+
+.filter-options {
+    display: flex;
+    gap: 06px;
+    color: var(--primary-font-color);
+}
+
+.filter-option {
+    cursor: pointer;
+    background-color: transparent;
+    color: var(--primary-font-color);
+    border: none;
+    height: 25px;
+    padding: 0 04px;
+}
+
+.filter-option.selected-filter {
+    border-bottom: 2px solid var(--light-color);
+}
+
 .todos-holder {
     margin-top: 2rem;
     width: 400px;

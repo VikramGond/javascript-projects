@@ -1,10 +1,12 @@
 const todoText = document.getElementById("todo-input");
 const addButton = document.querySelector(".add-todos");
 const todoListContainer = document.querySelector(".todo-lists");
-
+const filter_todo = document.querySelector(".filter-options");
 //---------------------------todos array------------------------------
 
 let todos = [];
+//-----------------------------filter----------------------------------
+let currentFilter = "all";
 
 //----------------------function declaration---------------------------
 
@@ -136,8 +138,7 @@ const confirmEdit = (todoElement) => {
   todo.text = newTodo;
   saveTodos();
 
-  renderEditedTodos(todoElement, todo)
- 
+  renderEditedTodos(todoElement, todo);
 };
 
 const cancelEdit = (todoElement) => {
@@ -146,11 +147,10 @@ const cancelEdit = (todoElement) => {
 
   if (!todo) return;
 
-  renderEditedTodos(todoElement, todo)
+  renderEditedTodos(todoElement, todo);
 };
 
 const renderEditedTodos = (todoElement, todo) => {
-
   todoElement.innerHTML = `
         <label>
           <input type="checkbox" 
@@ -164,6 +164,22 @@ const renderEditedTodos = (todoElement, todo) => {
             <button class="delete"><i class="fa-solid fa-trash-can fa-lg" style="color: rgb(200, 60, 60);"></i></button>
             <p class="time">${todo.time}</p>
       </div>`;
+};
+
+const renderTodoLists = (todosArray) => {
+  todoListContainer.innerHTML = "";
+
+  todosArray.forEach((todo) => {
+    renderTodos(todo);
+  });
+};
+
+const filterTodo = (filter) => {
+  if (filter === "all") return todos;
+
+  return todos.filter((todo) => {
+    return filter === "completed" ? todo.completed : !todo.completed;
+  });
 };
 
 // --------------------event Listeners--------------------------
@@ -225,6 +241,20 @@ todoListContainer.addEventListener("keydown", (e) => {
     const todoElement = e.target.closest(".todos-items");
     confirmEdit(todoElement);
   }
+});
+
+filter_todo.addEventListener("click", (e) => {
+  if (!e.target.classList.contains("filter-option")) return;
+
+  document
+    .querySelectorAll(".filter-option")
+    .forEach((button) => button.classList.remove("selected-filter"));
+
+  e.target.classList.add("selected-filter");
+  currentFilter = e.target.dataset.filter;
+
+  renderTodoLists(filterTodo(currentFilter));
+
 });
 
 loadSavedTodos();
