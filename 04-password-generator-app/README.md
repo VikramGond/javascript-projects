@@ -10,8 +10,7 @@ This project is being built to strengthen my JavaScript fundamentals through pra
 
 ## 🚀 Features
 
-- 🔐 Generate random passwords
-- 🔢 Customize password length
+- 🔢 Select password length using a range slider
 - 🔠 Include uppercase letters
 - 🔡 Include lowercase letters
 - 🔢 Include numbers
