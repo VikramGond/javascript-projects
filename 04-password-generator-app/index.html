@@ -1,13 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Password-Generator</title>
-    <link rel="stylesheet" href="src/css/style.css">
-</head>
-<body>
-    
+    <link rel="stylesheet" href="src/css/style.css" />
+  </head>
+  <body>
+    <main class="main" id="main">
+        <div class="password" id="password">
+            <p>sjkd894o29283dfsdedffdfd</p>
+        </div>
+      <div class="password-length">
+        <label for="password-length">Passwrod Length: </label>
+        <input
+          type="range"
+          name="password-length"
+          id="password-length"
+          minlength="8"
+          maxlength="24"
+        />
+      </div>
+      <div class="modification">
+        <div class="uppercase">
+          <label for="uppercase">UpperCase</label>
+          <input type="checkbox" name="uppercase" id="uppercase" />
+        </div>
+        <div>
+          <label for="lowercase">LowerCase</label>
+          <input type="checkbox" name="lowercase" id="lowercase" />
+        </div>
+        <div>
+          <label for="symbols">Symbols</label>
+          <input type="checkbox" name="symbols" id="symbols" />
+        </div>
+        <div>
+          <label for="numbers">Numbers</label>
+          <input type="checkbox" name="numbers" id="numbers" />
+        </div>
+      </div>
+    </main>
     <script src="src/javascript/script.js"></script>
-</body>
+  </body>
 </html>
