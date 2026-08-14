@@ -13,25 +13,25 @@ const generatePassword = () => {
   const numberCharacters = "0123456789";
   const symbolCharacters = "!@#$%^&{}[]?*()<>_-+/|.,";
 
-  let chacterPool = "";
+  let characterPool = "";
 
   if (lowercaseCheckbox.checked) {
-    charcterPool += lowercaseCharacters;
+    characterPool += lowercaseCharacters;
   }
 
   if (uppercaseCheckbox.checked) {
-    chacterPool += uppercaseCharacters;
+    characterPool += uppercaseCharacters;
   }
 
   if (numberCheckbox.checked) {
-    chacterPool += numberCharacters;
+    characterPool += numberCharacters;
   }
 
   if (symbolCheckbox.checked) {
-    chacterPool += symbolCharacters;
+    characterPool += symbolCharacters;
   }
 
-  if (chacterPool.length === 0) {
+  if (characterPool.length === 0) {
     passwordfield.textContent = "Select At least 1 checkbox";
     return;
   }
@@ -39,9 +39,9 @@ const generatePassword = () => {
   const length = Number(passwordLength.value);
   let password = "";
   for (let i = 0; i < length; i++) {
-    const j = Math.floor(Math.random() * chacterPool.length);
+    const j = Math.floor(Math.random() * characterPool.length);
 
-    password += chacterPool[j];
+    password += characterPool[j];
   }
 
   passwordfield.innerHTML = `<p>${password}</p>
