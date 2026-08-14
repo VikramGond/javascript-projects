@@ -16,7 +16,7 @@ const generatePassword = () => {
   let chacterPool = "";
 
   if (lowercaseCheckbox.checked) {
-    chacterPool += lowercaseCharacters;
+    charcterPool += lowercaseCharacters;
   }
 
   if (uppercaseCheckbox.checked) {
@@ -33,18 +33,18 @@ const generatePassword = () => {
 
   if (chacterPool.length === 0) {
     passwordfield.textContent = "Select At least 1 checkbox";
-    return
+    return;
   }
 
-  const length = Number(passwordLength.value)
-  let password = ""
-  for(let i = 0; i <    length; i++) {
-    const j = Math.floor(Math.random() * chacterPool.length)
+  const length = Number(passwordLength.value);
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    const j = Math.floor(Math.random() * chacterPool.length);
 
-    password += chacterPool[j]
+    password += chacterPool[j];
   }
 
-  passwordfield.textContent = password
+  passwordfield.textContent = password;
 };
 
 passwordLength.addEventListener("input", (e) => {
@@ -52,6 +52,4 @@ passwordLength.addEventListener("input", (e) => {
   passwordLengthArea.textContent = `Password Length: ${length}`;
 });
 
-generateBtn.addEventListener("click", () => {
-  generatePassword();
-});
+generateBtn.addEventListener("click", generatePassword);
