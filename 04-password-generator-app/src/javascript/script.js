@@ -44,7 +44,9 @@ const generatePassword = () => {
     password += chacterPool[j];
   }
 
-  passwordfield.textContent = password;
+  passwordfield.innerHTML = `<p>${password}</p>
+                             <i class="fa-regular fa-clipboard" style="color: rgb(12, 16, 58);"></i>                          
+  `;
 };
 
 passwordLength.addEventListener("input", (e) => {
