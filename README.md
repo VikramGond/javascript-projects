@@ -109,9 +109,9 @@ The project focuses on practicing JavaScript state management, DOM manipulation,
 
 ## 📈 Progress
 
-* ✅ Projects Completed: **3**
-* 🚧 Projects In Progress: **0**
-* ⏳ Projects Planned: **4**
+* ✅ Projects Completed: **4**
+* 🚧 Projects In Progress: **1**
+* ⏳ Projects Planned: **30**
 * 🎯 Target: **30+ JavaScript Projects**
 
 ### Current Progress
