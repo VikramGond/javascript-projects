@@ -39,7 +39,7 @@ I focus on **learning by building**, gradually increasing the complexity of each
 | 01  | Counter App        | A simple counter with increment, decrement, and reset functionality.                                                   | ✅ Completed    | [View](./01-Counter-app/)   |
 | 02  | Digital Clock      | Displays the current time and date with 12-hour and 24-hour format support.                                            | ✅ Completed    | [View](./02-digital-clock/) |
 | 03  | Todo App           | A Todo application with task management, completion tracking, deletion, creation time, and persistent browser storage. | ✅ Completed  | [View](./03-todo-app/)      |
-| 04  | Password Generator | Generate passwords with customizable options.                                                                          | ⏳ Planned      | -                           |
+| 04  | Password Generator | Generate passwords with customizable options.                                                                          |   ✅ Completed    | [View](./04-password-generator/) |
 | 05  | Weather App        | Fetch and display live weather information using an API.                                                               | ⏳ Planned      | -                           |
 
 ---
